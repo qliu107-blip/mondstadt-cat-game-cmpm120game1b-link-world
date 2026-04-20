@@ -1,0 +1,255 @@
+{
+  "Title": "Find the Lost Cat in Mondstadt",
+  "Credits": "Created for Game 1(b).",
+  "Intro": "You are a patrol knight in Mondstadt. Diona from the Cat's Tail asks you to help find a missing cat. Search the city, talk to people, inspect suspicious places, leave cat food in the right spots, and unlock the hidden place where the little cat is hiding.",
+  "InitialLocation": "Cat's Tail Bar",
+  "Locations": {
+    "Cat's Tail Bar": {
+      "Body": "You are inside the Cat's Tail Tavern. The missing cat was last seen here. The whole room still carries the energy of a place full of cats, drinks, and trouble.",
+      "Image": "https://static.wikia.nocookie.net/gensin-impact/images/6/62/Cat%27s_Tail_Interior.png/revision/latest?cb=20221211182230",
+      "NPC": {
+        "name": "Diona",
+        "dialogue": "A cat from the tavern ran off again? Hmph. Go bring it back before it gets itself into even more trouble."
+      },
+      "Choices": [
+        { "Text": "Go to Bar Counter", "Target": "Bar Counter" },
+        { "Text": "Go to Cat Rest Place", "Target": "Cat Rest Place" },
+        { "Text": "Go to Drinking Table", "Target": "Drinking Table" },
+        { "Text": "Leave for Mondstadt", "Target": "Mondstadt" }
+      ]
+    },
+    "Bar Counter": {
+      "Body": "The bar counter is covered with tiny scratches and scattered paw marks.",
+      "Image": "https://upload-os-bbs.hoyolab.com/upload/2022/12/22/195483712/e4d51fcb3ec153d3a5540ed51dc21a94_300190157691906888.JPG",
+      "NPC": {
+        "name": "Prince",
+        "dialogue": "Meow. The little one jumped over here earlier, then dashed out before anyone could catch it."
+      },
+      "searchable": true,
+      "searchText": "You find fresh claw marks and a few strands of fur. The cat definitely passed through here in a hurry.",
+      "repeatSearchText": "The same claw marks are still here.",
+      "Choices": [
+        { "Text": "Back to Cat's Tail Bar", "Target": "Cat's Tail Bar" }
+      ]
+    },
+    "Cat Rest Place": {
+      "Body": "A cozy corner with a soft cushion. This is where the tavern cats usually nap.",
+      "Image": "https://cdn.oneesports.gg/cdn-data/2022/12/GenshinImpact_GeniusInvokationTCG_CatsTail_Diona.jpg",
+      "NPC": {
+        "name": "Tavern Cat",
+        "dialogue": "Mrrp... The cushion is still warm. Someone was resting here not long ago."
+      },
+      "searchable": true,
+      "searchText": "You find a warm cushion and a clear paw print leading away from the tavern.",
+      "repeatSearchText": "There is nothing new here, but the trail still feels recent.",
+      "Choices": [
+        { "Text": "Back to Cat's Tail Bar", "Target": "Cat's Tail Bar" }
+      ]
+    },
+    "Drinking Table": {
+      "Body": "A quiet table in the tavern, tucked near the wall.",
+      "Image": "https://upload-os-bbs.hoyolab.com/upload/2022/12/22/195483712/f13b2fb2020aa4b5a8e4710661beeee0_3390649017865144197.JPG?x-oss-process=image%2Fresize%2Cs_1000%2Fauto-orient%2C0%2Finterlace%2C1%2Fformat%2Cwebp%2Fquality%2Cq_70",
+      "NPC": {
+        "name": "Tavern Customer",
+        "dialogue": "I saw a small cat shoot under the chairs and rush toward the plaza. Fast little thing."
+      },
+      "searchable": true,
+      "searchText": "Under the table, dust has been disturbed by tiny paws. The trail points outside.",
+      "repeatSearchText": "The dusty paw trail is still visible.",
+      "Choices": [
+        { "Text": "Back to Cat's Tail Bar", "Target": "Cat's Tail Bar" }
+      ]
+    },
+    "Mondstadt": {
+      "Body": "You stand in the city of Mondstadt.",
+      "Image": "https://preview.redd.it/anyone-else-sad-that-mondstadt-feels-so-empty-with-the-v0-62d65t1g5ffc1.png?auto=webp&s=2fe0eebb9b3df0503f6be0bbf63438b315032db4",
+      "NPC": {
+        "name": "Mondstadt Citizen",
+        "dialogue": "A frightened cat can hide almost anywhere in the city."
+      },
+      "Choices": [
+        { "Text": "Go to Windblume Shop", "Target": "Windblume Shop" },
+        { "Text": "Go to Good Hunter Restaurant", "Target": "Good Hunter Restaurant" },
+        { "Text": "Go to Westwind Cathedral", "Target": "Westwind Cathedral" },
+        { "Text": "Go to Statue of Barbatos", "Target": "Statue of Barbatos" },
+        { "Text": "Go to Knights of Favonius Headquarters", "Target": "Knights of Favonius Headquarters" },
+        { "Text": "Go Outside City Wall", "Target": "Outside City Wall" },
+        { "Text": "Return to Cat's Tail Bar", "Target": "Cat's Tail Bar" }
+      ]
+    },
+    "Windblume Shop": {
+      "Body": "Flower pots and soft soil sit beside the shop.",
+      "Image": "https://static.wikia.nocookie.net/gensin-impact/images/a/a0/NPC_Location_Marjorie_Context.png/revision/latest/scale-to-width-down/1200?cb=20230114023814",
+      "NPC": {
+        "name": "Marjorie",
+        "dialogue": "A little cat brushed past the shop earlier. It seemed to be in a hurry."
+      },
+      "searchable": true,
+      "searchText": "You notice clear paw prints. Good place for cat food.",
+      "foodSpot": true,
+      "findsFoodSpot": true,
+      "Choices": [
+        { "Text": "Back", "Target": "Mondstadt" }
+      ]
+    },
+    "Good Hunter Restaurant": {
+      "Body": "The smell of food fills the air.",
+      "Image": "https://upload-os-bbs.hoyolab.com/upload/2022/05/02/141215051/771e9b3197477368ae58e016a7a4e7d6_5047320331522452537.png",
+      "NPC": {
+        "name": "Sara",
+        "dialogue": "Cats love food."
+      },
+      "searchable": true,
+      "searchText": "Crumbs and paw marks.",
+      "Choices": [
+        { "Text": "Back", "Target": "Mondstadt" }
+      ]
+    },
+    "Statue of Barbatos": {
+      "Body": "Venti is sitting on the statue hand.",
+      "Image": "https://webstatic.hoyoverse.com/upload/uploadstatic/contentweb/20191028/2019102811533637769.jpg",
+      "NPC": {
+        "name": "Venti",
+        "dialogue": "Follow the wind."
+      },
+      "Choices": [
+        { "Text": "Back", "Target": "Mondstadt" }
+      ]
+    },
+    "Westwind Cathedral": {
+      "Body": "Quiet cathedral.",
+      "Image": "https://preview.redd.it/the-favonius-cathedral-daylight-v0-xl2x18sworf91.jpg?width=640&crop=smart&auto=webp&s=78abbf0920495568fbed9af98f956b02b642b832",
+      "NPC": {
+        "name": "Barbara",
+        "dialogue": "Please search gently."
+      },
+      "Choices": [
+        { "Text": "Go to Benches", "Target": "Benches" },
+        { "Text": "Go to Hallway", "Target": "Hallway" },
+        { "Text": "Back", "Target": "Mondstadt" }
+      ]
+    },
+    "Benches": {
+      "Body": "Warm benches.",
+      "Image": "https://images.gamebanana.com/img/ss/mods/683d5e4357df7.jpg",
+      "NPC": {
+        "name": "Passing Nun",
+        "dialogue": "I thought I saw a cat hop onto the bench for a moment, then disappear again."
+      },
+      "searchable": true,
+      "searchText": "Another food spot.",
+      "foodSpot": true,
+      "findsFoodSpot": true,
+      "Choices": [
+        { "Text": "Back", "Target": "Westwind Cathedral" }
+      ]
+    },
+    "Hallway": {
+      "Body": "Side hallway.",
+      "Image": "https://upload-os-bbs.hoyolab.com/upload/2022/07/09/135599622/3ea787952558004ae48a8addcc0daf98_5761464586837499709.jpg",
+      "NPC": {
+        "name": "Seamus Pegg",
+        "dialogue": "Something ran through here."
+      },
+      "searchable": true,
+      "searchText": "Claw marks.",
+      "Choices": [
+        { "Text": "Back", "Target": "Westwind Cathedral" }
+      ]
+    },
+    "Knights of Favonius Headquarters": {
+      "Body": "HQ.",
+      "Image": "https://preview.redd.it/its-finally-finished-favonious-hq-serenitea-pot-edition-the-v0-wilwq10zaky61.png?width=640&crop=smart&auto=webp&s=f42f191860776771d3476223699960d86df494c9",
+      "NPC": {
+        "name": "Jean",
+        "dialogue": "Check outside."
+      },
+      "Choices": [
+        { "Text": "Go to Grand Master Office", "Target": "Grand Master Office" },
+        { "Text": "Go to Confinement Room", "Target": "Confinement Room" },
+        { "Text": "Back", "Target": "Mondstadt" }
+      ]
+    },
+    "Grand Master Office": {
+      "Body": "A clean office full of maps, reports, and the air of constant responsibility.",
+      "Image": "https://i.ytimg.com/vi/K1xI2L4KcmE/maxresdefault.jpg",
+      "NPC": {
+        "name": "Jean",
+        "dialogue": "Continue your search. If the cat has left the busy center of the city, the outer wall and bridge are your next best leads."
+      },
+      "searchable": true,
+      "searchText": "You find a note and a map that reinforce the suspicion that the cat ran toward the outer wall.",
+      "repeatSearchText": "The office offers no new clues now.",
+      "Choices": [
+        { "Text": "Back", "Target": "Knights of Favonius Headquarters" }
+      ]
+    },
+    "Confinement Room": {
+      "Body": "Varka is here for... reasons.",
+      "Image": "https://upload-os-bbs.hoyolab.com/upload/2024/11/03/381645515/7c8ddf7a33c9967d92d8af4a35a34924_70520051416499818.png",
+      "NPC": {
+        "name": "Varka",
+        "dialogue": "Don't ask."
+      },
+      "searchable": true,
+      "searchText": "Cat passed through.",
+      "Choices": [
+        { "Text": "Back", "Target": "Knights of Favonius Headquarters" }
+      ]
+    },
+    "Outside City Wall": {
+      "Body": "Outside.",
+      "Image": "https://static0.srcdn.com/wordpress/wp-content/uploads/2020/10/Genshin-Impact-Kaeya-1.jpg?w=1200&h=675&fit=crop",
+      "NPC": {
+        "name": "Kaeya",
+        "dialogue": "A missing cat? Interesting. It might have slipped beyond the usual patrol routes."
+      },
+      "Choices": [
+        { "Text": "Go to Small Spot Outside Wall", "Target": "Small Spot Outside Wall" },
+        { "Text": "Go to Bridge", "Target": "Bridge" },
+        { "Text": "Back", "Target": "Mondstadt" }
+      ]
+    },
+    "Small Spot Outside Wall": {
+      "Body": "Hidden grass.",
+      "Image": "https://i.imgur.com/VM4oa58.jpg",
+      "searchable": true,
+      "searchText": "Final food spot.",
+      "foodSpot": true,
+      "findsFoodSpot": true,
+      "Choices": [
+        { "Text": "Back", "Target": "Outside City Wall" }
+      ]
+    },
+    "Bridge": {
+      "Body": "Bridge.",
+      "Image": "https://i.pinimg.com/736x/a0/39/16/a039168ac8537c3941fba76cefdf40a1.jpg",
+      "NPC": {
+        "name": "Timmie",
+        "dialogue": "It ran that way."
+      },
+      "searchable": true,
+      "searchText": "Hidden path unlocked.",
+      "Choices": [
+        { "Text": "Go to Hidden Cat Path", "Target": "Hidden Cat Path", "locked": true, "requiresCats": true },
+        { "Text": "Back", "Target": "Outside City Wall" }
+      ]
+    },
+    "Hidden Cat Path": {
+      "Body": "Secret path.",
+      "Image": "https://i.ytimg.com/vi/z80O90HPb7M/maxresdefault.jpg",
+      "Choices": [
+        { "Text": "Enter", "Target": "Sweet Cat-Cat Vase", "locked": true },
+        { "Text": "Back", "Target": "Bridge" }
+      ]
+    },
+    "Sweet Cat-Cat Vase": {
+      "Body": "You found the cat.",
+      "Image": "https://www.destructoid.com/wp-content/uploads/2024/04/Genshin-Feline-Fortress-Furdyssey-cat-petting.webp?w=640&resize=1024%2C576",
+      "NPC": {
+        "name": "Missing Cat",
+        "dialogue": "Meow."
+      }
+    }
+  }
+}
