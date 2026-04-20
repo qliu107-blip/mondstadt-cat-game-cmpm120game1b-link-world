@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Graph Previewer</title>
+    <script src="cytoscape.min.js"></script>
+</head>
+
+<body>
+    <div>
+        This page gives a graphical preview of the story graph described by <code>myStory.json</code>.
+    </div>
+    <pre id="logOutput"></pre>
+    <div id="graph" style="width: 640px; height: 480px; border: thin solid gray;"></div>
+    <pre id="details"></pre>
+</body>
+<script>
+    function log(msg) {
+        logOutput.innerHTML += msg + "\n";
+    }
+
+    log("Fetching JSON file...")
+    fetch("myStory.json").then(
+        (response) => {
+            log("Parsing JSON file...");
+            return response.json();
+        }
+    ).then(
+        (storyData) => {
+            log("Story data loaded.");
+            log("\n");
+            log("Story metadata:")
+            for (let key of ["Title", "Credits", "InitialLocation"]) {
+                log(`\t${key}: ${storyData[key]}`);
+            }
+
+            log("\n")
+            log("Story graph visualization:")
+
+            let positions = {
+                "Cat's Tail Bar": { x: 220, y: 260 },
+                "Bar Counter": { x: 180, y: 470 },
+                "Cat Rest Place": { x: 300, y: 455 },
+                "Drinking Table": { x: 420, y: 420 },
+
+                "Windblume Shop": { x: 330, y: 90 },
+                "Good Hunter Restaurant": { x: 390, y: 320 },
+
+                "Mondstadt": { x: 620, y: 80 },
+                "Outside City Wall": { x: 640, y: 170 },
+
+                "Westwind Cathedral": { x: 1080, y: 110 },
+                "Benches": { x: 900, y: 360 },
+                "Hallway": { x: 1000, y: 360 },
+
+                "Statue of Barbatos": { x: 820, y: 260 },
+
+                "Knights of Favonius Headquarters": { x: 520, y: 400 },
+                "Grand Master Office": { x: 780, y: 420 },
+                "Confinement Room": { x: 560, y: 490 },
+
+                "Bridge": { x: 700, y: 360 },
+                "Small Spot Outside Wall": { x: 920, y: 390 },
+
+                "Hidden Cat Path": { x: 960, y: 470 },
+                "Sweet Cat-Cat Vase": { x: 680, y: 540 }
+            };
+
+            let nodes = [];
+            let edges = [];
+
+            for (let [key, location] of Object.entries(storyData.Locations)) {
+                nodes.push({
+                    data: { id: key, name: location.Body },
+                    position: positions[key] || { x: 100, y: 100 }
+                });
+
+                for (let choice of location.Choices || []) {
+                    edges.push({
+                        data: {
+                            source: key,
+                            target: choice.Target,
+                            id: key + ": " + choice.Text
+                        }
+                    });
+                }
+            }
+
+            let cy = cytoscape({
+                container: graph,
+                layout: {
+                    name: 'preset'
+                },
+                elements: { nodes, edges }
+            });
+
+            cy.style([
+                {
+                    selector: `[id="${storyData.InitialLocation}"]`,
+                    style: {
+                        'border-width': 8,
+                        'border-color': 'lightblue',
+                        'background-color': 'lightblue'
+                    }
+                },
+                {
+                    selector: 'node',
+                    style: {
+                        'label': 'data(id)',
+                        'text-valign': 'center',
+                        'text-halign': 'center',
+                        'font-size': '18px',
+                        'width': 32,
+                        'height': 32
+                    }
+                },
+                {
+                    selector: 'edge',
+                    style: {
+                        'width': 4,
+                        'line-color': '#ccc',
+                        'target-arrow-color': '#ccc',
+                        'target-arrow-shape': 'triangle',
+                        'curve-style': 'bezier'
+                    }
+                },
+                {
+                    selector: 'edge[labelOn]',
+                    style: {
+                        'label': 'data(id)',
+                        'font-size': '10px',
+                        'text-rotation': 'autorotate'
+                    }
+                }
+            ]);
+
+            cy.on('mouseover', 'node', function () {
+                details.innerHTML = storyData.Locations[this.id()].Body;
+            });
+
+            cy.on('mouseover', 'edge', function () {
+                this.data('labelOn', true);
+                cy.style().update();
+                details.innerHTML = this.id();
+            });
+
+            cy.on('mouseout', 'edge', function () {
+                this.removeData('labelOn');
+                cy.style().update();
+                details.innerHTML = '';
+            });
+
+            cy.on('mouseout', 'node', function () {
+                details.innerHTML = '';
+            });
+
+            cy.userZoomingEnabled(true);
+            cy.userPanningEnabled(true);
+        }
+    ).catch(reason => log(reason));
+</script>
+
+</html>
